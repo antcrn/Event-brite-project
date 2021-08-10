@@ -9,10 +9,22 @@
           <%= f.label :email, "Email" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
         </div>
+        <br/>
         <div class="form-group">
           <%= f.label :first_name, "Prénom" %><br />
           <%= f.text_field :first_name, autofocus: true, autocomplete: "Prénom", class: "form-control" %>
         </div>
+        <br/>
+        <div class="form-group">
+          <%= f.label :last_name, "Nom" %><br />
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "Nom", class: "form-control" %>
+        </div>
+        <br/>
+        <div class="form-group">
+          <%= f.label :description, "Description" %><br />
+          <%= f.text_area :description, autofocus: true, autocomplete: "Description", class: "form-control" %>
+        </div>
+        <br/>
         <div class="form-group">
           <%= f.label :password %>
           <% if @minimum_password_length %>
@@ -20,10 +32,12 @@
           <% end %><br />
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
         </div>
+        <br/>
         <div class="form-group">
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
         </div>
+        <br/>
         <div class="actions mt-5">
           <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block" %>
         </div>

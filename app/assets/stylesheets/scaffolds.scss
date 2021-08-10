@@ -19,14 +19,12 @@ pre {
     font-size: 11px;
 }
 
-a {
-    color: #fff;
-}
-
-a:visited {
-    color: #fff;
-}
-
+// a {
+//     color: #fff;
+// }
+// a:visited {
+//     color: #fff;
+// }
 a:hover {
     color: #fff;
     opacity: 0.5;
@@ -76,8 +74,4 @@ div.actions {
 #error_explanation ul li {
     font-size: 12px;
     list-style: square;
-}
-
-label {
-    display: block;
 }

@@ -2,7 +2,7 @@
       <div class="col-md-5 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal text-light">Events Project</h1>
         <p class="lead font-weight-normal text-light">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple's marketing pages.</p>
-        <a class="btn btn-outline-secondary text-light" href="#">Coming soon</a>
+<%= link_to 'Crééer un evenement', new_event_path, class:"btn btn-outline-secondary text-light"%>
       </div>
       <div class="product-device box-shadow d-none d-md-block"></div>
       <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
@@ -15,8 +15,8 @@
 <section class="container">
 <div class="row">
 <% @events.each do |event| %>
-  <div class="col-sm-3 mb-3">
-    <div class="card" style="width: 18rem;">
+  <div class="col-sm-3 mb-3 ">
+    <div class="card box" style="width: 18rem;">
       <img src="https://loremflickr.com/320/240/brazil,rio" class="card-img-top">
         <div class="card-body">
         <h6 class="card-title"><%= event.title %></h6>
@@ -26,7 +26,6 @@
         </div>
         <div class="footer ">
           <p class="txt3"><i class="far fa-calendar-alt"></i>  <%= event.start_date.strftime("%d %b, %Y") + " "+ event.start_date.strftime("%I:%M%P") %>     <i class="far fa-clock"></i>  <%= event.duration %>"</p>
-          <p class="txt3"></p>
           <p class="txt3"><i class="fas fa-user"></i>  <%= "#{event.administrator.first_name} #{event.administrator.last_name}" %></p> 
         </div>
             <% if logged_in?() && only_user?(event.administrator) %>

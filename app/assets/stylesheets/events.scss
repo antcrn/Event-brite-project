@@ -1,3 +1,4 @@
+Remember me
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,3 +14,21 @@
  *= require_tree .
  *= require_self
  */
+
+.box {
+    transition: box-shadow .3s;
+    width: 300px;
+    height: 500px;
+    margin: 50px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background: #fff;
+}
+
+.box:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, .5);
+}
+
+.txt3 {
+    color: #198754
+}

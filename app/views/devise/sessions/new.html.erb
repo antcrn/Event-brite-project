@@ -1,26 +1,51 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+  <div class="row no-gutter">
+    <!-- The image half -->
+    <div class="col-md-6 d-none d-md-flex bg-image">
+      <img src="https://source.unsplash.com/random/800x900">
     </div>
-  <% end %>
+    <!-- The content half -->
+    <div class="col-md-6 bg-light">
+      <div class="login d-flex align-items-center py-5">
+        <!-- Demo content-->
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-10 col-xl-7 mx-auto">
+              <h3 class="display-4">Se connecter</h3>
+              <p class="text-muted mb-4">Rejoignez la communauté EVENTPROJECT.</p>
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+                <div class="form-group mb-3">
+                  <% f.label :email %>
+                  <%= f.text_field :email, class:"form-control rounded-pill border-0 shadow-sm px-4" %>
+                </div>
+
+                <div class="form-group mb-3">
+                  <% f.label :password %>
+                  <%= f.password_field :password, class: "form-control rounded-pill border-0 shadow-sm px-4 text-primary" %>
+                </div>
+
+                <% if devise_mapping.rememberable? %>
+                  <div class="form-check">
+                    <% f.label :remember_me %>
+                    <p><%= f.check_box :remember_me %> Remember me</p>
+                  </div>
+                <% end %>
+                
+                <%= f.submit "Se connecter", class:"btn btn-success btn-block mb-2 rounded-pill shadow-sm" %>
+
+                <div class="text-left d-flex justify-content-between mt-4"><p class="class: 'font-italic text-primary'"><%= render "devise/shared/links" %> </p></div>   
+                <% end %>   
+            </div>
+          </div>
+        </div><!-- End -->
+      </div>
+    </div><!-- End -->
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>
+
+
+
+
