@@ -1,5 +1,9 @@
 # README
 
+Follow the project on Heroku : 
+https://eventbrite-with-devise.herokuapp.com
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 

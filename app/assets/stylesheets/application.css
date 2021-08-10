@@ -30,3 +30,14 @@ th {
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+.text-truncate-container {
+    width: 250px;
+    overflow: hidden;
+}
+
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}

@@ -69,6 +69,8 @@ class EventsController < ApplicationController
 
   private
 
+  
+
   def only_administrator(administrator)
     if administrator.nil?
       redirect_to events_path
