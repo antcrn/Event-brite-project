@@ -1,0 +1,51 @@
+<%= form_with(model: event) do |form| %>
+  <div class="field">
+    <%= form.label :Titre %>
+    <%= form.text_field :title %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :Description %>
+    <%= form.text_area :description, size:"100x10" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Date_de_début %>
+    <%= form.datetime_local_field :start_date %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :Durée %>
+    <%= form.number_field :duration, in:5..60, step:5 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Lieu %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :Prix %>
+    <%= form.number_field :price, in:1..1000, step:1 %>
+  </div>
+
+  <%= form.hidden_field :administrator_id, value: current_user.id %>
+  <%= form.hidden_field :administrator, value: current_user %>
+
+
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+        <% event.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+<% if logged_in?  && only_user?(@event.administrator) %>
+  <%= link_to 'Edit', edit_event_path(@event) %>|
+<% end %>
+<%= link_to 'Back', events_path %>
+
+<div>
+  <p>Titre: <%= @event.title %></p>
+  <p>Description: <%= @event.description %></p>
+  <p>Début de l'événènement: <%= @event.start_date %></p>
+  <p>Fin de l'évènement: <%= @event.start_date + @event.duration.minutes %></p>
+  <p>Durée de l'évènement: <%= @event.duration %></p>
+  <p>Responsable:<%= "#{@event.administrator.first_name} #{@event.administrator.last_name} "%></p>
+  <p>Email:<%= "#{@event.administrator.email} "%></p>
+  <p>Nombre de participant(s) <%= @num_participant %></p>
+</div>

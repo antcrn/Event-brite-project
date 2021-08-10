@@ -1,0 +1,19 @@
+<h1>Users#show :)</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+<div>
+  <p>first name : <%= @user.first_name %></p>
+  <p>last name :<%= @user.last_name %></p>
+  <p>description :<%= @user.description %></p>
+  <p>email :<%= @user.email %></p>
+</div>
+<br/>
+  
+<% @event.each do |event| %>
+    <div>
+      <p><%= event.title %></p>
+    <p><%= link_to "Show", event_path(event.id) %></p>
+  </div>
+<% end %>
+
+<%= link_to "Edit", edit_user_registration_path %>
+
