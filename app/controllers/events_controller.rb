@@ -2,23 +2,18 @@ class EventsController < ApplicationController
   before_action :set_event, only: %i[ show edit update destroy ]
   before_action :logged_in?, only: %i[ new edit update destroy ]
 
-
-  # GET /events or /events.json
   def index
     @events = Event.all.reorder('start_date ASC')
   end
 
-  # GET /events/1 or /events/1.json
   def show
     @num_participant = Attendance.where(event_id: params[:id]).count
   end
 
-  # GET /events/new
   def new
     @event = Event.new
   end
 
-  # GET /events/1/edit
   def edit
     if params[:administrator].nil?
       @admin = @event.administrator
@@ -28,7 +23,6 @@ class EventsController < ApplicationController
     only_administrator(@admin)
   end
 
-  # POST /events or /events.json
   def create
     @event = Event.new(event_params)
 
@@ -43,7 +37,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /events/1 or /events/1.json
   def update
     only_user?(current_user)
     respond_to do |format|
@@ -57,7 +50,6 @@ class EventsController < ApplicationController
     end
   end
 
-  # DELETE /events/1 or /events/1.json
   def destroy
     only_user?(current_user)
     @event.destroy
@@ -69,8 +61,6 @@ class EventsController < ApplicationController
 
   private
 
-  
-
   def only_administrator(administrator)
     if administrator.nil?
       redirect_to events_path
@@ -79,12 +69,10 @@ class EventsController < ApplicationController
     end
   end
     
-  # Use callbacks to share common setup or constraints between actions.
   def set_event
     @event = Event.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
   def event_params
     params.require(:event).permit(:title, :description, :location, :price, :start_date, :duration, :administrator_id)
   end

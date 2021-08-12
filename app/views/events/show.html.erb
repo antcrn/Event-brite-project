@@ -1,6 +1,7 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
+
 <% if logged_in?  && only_user?(@event.administrator) %>
-  <%= link_to 'Edit', edit_event_path(@event) %>|
+  <%= link_to 'Mon espace événement', attendance_path(@event.id) %>
 <% end %>
 <%= link_to 'Back', events_path %>
 
@@ -10,7 +11,36 @@
   <p>Début de l'événènement: <%= @event.start_date %></p>
   <p>Fin de l'évènement: <%= @event.start_date + @event.duration.minutes %></p>
   <p>Durée de l'évènement: <%= @event.duration %></p>
-  <p>Responsable:<%= "#{@event.administrator.first_name} #{@event.administrator.last_name} "%></p>
-  <p>Email:<%= "#{@event.administrator.email} "%></p>
+  <p>Responsable:<%= "#{@event.administrator.first_name} #{@event.administrator.last_name}"%></p>
+  <p>Email:<%= "#{@event.administrator.email}"%></p>
   <p>Nombre de participant(s) <%= @num_participant %></p>
 </div>
+
+<% if !is_participant?() && logged_in?() && !only_user?(@event.administrator) && !is_free?(@event) %>
+  <%= form_tag orders_path do %>
+    <article>
+      <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
+      <% end %>
+      <label class="amount">
+        <span><%= @event.price %> €</span>
+      </label>
+    </article> 
+
+    <%= hidden_field_tag(:event_id, @event.id) %>
+
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+        data-description="Participer à l'evenement"
+        data-amount="<%= (@event.price.to_d)*100 %>"
+        data-currency="eur"
+        data-locale="auto">
+    </script>
+  <% end %>
+  <% elsif !is_participant?() && logged_in?() && !only_user?(@event.administrator) && is_free?(@event) %>
+    <%= button_to "Participer", attendances_path, params: {user_id: current_user.id, event_id: @event.id} %>
+  <% elsif !logged_in?() %>
+    <p>Pour t'inscrire à un évènement <%= link_to "connecte toi", new_user_session_path %></p>
+<% end %>

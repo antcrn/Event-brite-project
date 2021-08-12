@@ -43,10 +43,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
  
   #MY GEM DEV
-  group :development do
+  
   gem "better_errors"
   gem "binding_of_caller"
-  end
+  gem 'stripe'
+
   
   gem 'spring'
 end
@@ -68,3 +69,5 @@ gem 'devise'
 gem 'table_print'
 gem 'faker'
 gem 'activerecord-reset-pk-sequence'
+gem 'dotenv-rails'
+

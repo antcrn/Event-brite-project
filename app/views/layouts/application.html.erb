@@ -23,7 +23,7 @@
         <%= link_to "Accueil", root_path, class:"nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to 'Crééer un evenement', new_event_path, class:"nav-link" %>
+          <%= link_to 'Créer un evenement', new_event_path, class:"nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,7 +48,7 @@
   </div>
 </nav>
 
-    <%= yield %>
+    <%= yield %>  
    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>

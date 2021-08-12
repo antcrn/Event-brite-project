@@ -7,4 +7,4 @@ class UsersController < ApplicationController
     only_user?(@user)
     @event = Event.where(administrator_id: params[:id])
   end
-end
+end 

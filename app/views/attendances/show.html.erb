@@ -1,0 +1,6 @@
+<h1>Liste des participant</h1>
+<% @participants.each do |participant| %>
+<li> <%= participant_user(participant) %> </li> 
+<% end %>
+<%= link_to 'Edit', edit_event_path(@event), class:"btn-sm btn-info"  %>
+

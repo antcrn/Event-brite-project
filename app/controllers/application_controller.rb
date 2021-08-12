@@ -13,4 +13,16 @@ class ApplicationController < ActionController::Base
   def only_user?(user)
     redirect_to events_path unless current_user().id == user.id
   end
+
+  def add_participation(user_id, event_id, customer_id = "gratuit")
+    Attendance.create(user_id: user_id, event_id: event_id, stripe_customer_id: customer_id)
+  end
+
+  def only_administrator(administrator)
+    if administrator.nil?
+      redirect_to events_path
+    else
+      only_user?(administrator)
+    end
+  end
 end

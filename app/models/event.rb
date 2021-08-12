@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   validate :divisible_by_five?
   validates :title, presence: true, length: {in: 5..140}
   validates :description, presence: true, length: {in: 20..1000}
-  validates :price, presence: true, numericality: {greater_than: 0, less_than: 1001}
+  validates :price, presence: true, numericality: {in: 0..1000}
   validates :location, presence: true
   belongs_to :administrator, class_name: "User"
   has_many :attendances
